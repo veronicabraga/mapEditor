@@ -14,13 +14,17 @@ public class Cell {
         //int height, int width,
         //this.height = height;
         //this.width = width;
-        cellSize = 25;
+        cellSize = 10;
         rect = new Rectangle(x, y, cellSize, cellSize);
         rect.draw();
     }
 
     public int getCellSize() {
         return cellSize;
+    }
+
+    public Rectangle getRect() {
+        return rect;
     }
 
 
