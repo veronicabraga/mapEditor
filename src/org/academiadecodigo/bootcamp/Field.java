@@ -42,4 +42,13 @@ public class Field {
 
     }
 
+
+    public int getCols() {
+        return cols;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
 }

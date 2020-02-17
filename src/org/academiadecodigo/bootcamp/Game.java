@@ -11,7 +11,7 @@ public class Game {
 
     public Game() {
         field = new Field(60, 70);
-        player = new Player();
+        player = new Player(field);
         keyboardPresses();
 
         }
