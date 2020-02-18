@@ -1,6 +1,8 @@
 package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Field {
 
@@ -24,13 +26,11 @@ public class Field {
 
         cells = new Cell[cols][rows];
 
-        for(int col = 0; col < cols; col++) {
-            for(int row = 0; row < rows; row++) {
+        for (int col = 0; col < cols; col++) {
+            for (int row = 0; row < rows; row++) {
                 cells[col][row] = new Cell(col, row);
             }
         }
-
-
     }
 
 
@@ -48,5 +48,11 @@ public class Field {
     }
 
 
-
+    public void clearField() {
+        for (int col = 0; col < cols; col++) {
+            for (int row = 0; row < rows; row++) {
+                cells[col][row].getRect().draw();
+            }
+        }
+    }
 }

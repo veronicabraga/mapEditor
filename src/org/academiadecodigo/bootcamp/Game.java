@@ -8,17 +8,22 @@ public class Game {
 
     private Player player;
     private Field field;
+    private KeyboardInteraction KInteraction;
 
     public Game() {
         field = new Field(50, 60);
         player = new Player(field);
-        keyboardPresses();
+        KInteraction = new KeyboardInteraction(player, field);
+        keyboardPresses(); 
+
+
 
     }
 
     public void keyboardPresses() {
 
-        Keyboard k = new Keyboard(player);
+        Keyboard k = new Keyboard(KInteraction);
+
 
         KeyboardEvent eventRight = new KeyboardEvent();
         eventRight.setKey(KeyboardEvent.KEY_RIGHT);
@@ -44,5 +49,10 @@ public class Game {
         eventPrintClean.setKey(KeyboardEvent.KEY_SPACE);
         eventPrintClean.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(eventPrintClean);
+
+        KeyboardEvent eventCleanAll = new KeyboardEvent();
+        eventCleanAll.setKey(KeyboardEvent.KEY_C);
+        eventCleanAll.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(eventCleanAll);
     }
 }
