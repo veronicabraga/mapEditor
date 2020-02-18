@@ -10,13 +10,13 @@ public class Game {
     private Field field;
 
     public Game() {
-        field = new Field(60, 70);
+        field = new Field(50, 60);
         player = new Player(field);
         keyboardPresses();
 
-        }
+    }
 
-    public void keyboardPresses(){
+    public void keyboardPresses() {
 
         Keyboard k = new Keyboard(player);
 
@@ -39,5 +39,10 @@ public class Game {
         eventDown.setKey(KeyboardEvent.KEY_DOWN);
         eventDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(eventDown);
+
+        KeyboardEvent eventPrintClean = new KeyboardEvent();
+        eventPrintClean.setKey(KeyboardEvent.KEY_SPACE);
+        eventPrintClean.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(eventPrintClean);
     }
 }

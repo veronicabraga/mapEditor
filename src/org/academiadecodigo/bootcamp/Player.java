@@ -7,14 +7,14 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Player implements KeyboardHandler {
 
-    private Position position;
+    //private Position position;
     private Rectangle rectPlayer;
     private Cell cellPlayer;
     private Field field;
 
     public Player(Field field) {
-        position = new Position(0, 0);
-        cellPlayer = new Cell(10, 10);
+
+        cellPlayer = new Cell(5, 5);
         cellPlayer.getRect().fill();
         rectPlayer = cellPlayer.getRect();
         this.field = field;
@@ -24,35 +24,53 @@ public class Player implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent e) {
 
+            System.out.println("key is: " + e.getKey());
         switch(e.getKey()) {
 
-            case KeyboardEvent.KEY_RIGHT:
-                if (position.getCol() != field.getCols() -1) {
-                    position.setCol(1);
-                    rectPlayer.translate(cellPlayer.getCellSize(), 0);
-                }
-                 break;
 
-            case KeyboardEvent.KEY_LEFT:
-                if (position.getCol() != 0) {
-                 position.setCol(-1);
-                 rectPlayer.translate(-cellPlayer.getCellSize(), 0);
+            case KeyboardEvent.KEY_RIGHT:
+                System.out.println("Rigth");
+                if (cellPlayer.getCol() != field.getCols() -1) {
+                    cellPlayer.setCol(1);
+                    rectPlayer.translate(cellPlayer.CELLSIZE, 0);
                 }
                  break;
 
             case KeyboardEvent.KEY_DOWN:
-                if (position.getRow() != field.getRows() -1) {
-                 position.setRow(1);
-                 rectPlayer.translate( 0, cellPlayer.getCellSize());
+                System.out.println("hello" + cellPlayer.getRow());
+                if (cellPlayer.getRow() != field.getRows() -1) {
+                    cellPlayer.setRow(1);
+                    rectPlayer.translate( 0, cellPlayer.CELLSIZE);
+                }
+                break;
+            case KeyboardEvent.KEY_LEFT:
+                System.out.println("Left");
+                if (cellPlayer.getCol() != 0) {
+                 cellPlayer.setCol(-1);
+                 rectPlayer.translate(-cellPlayer.CELLSIZE, 0);
                 }
                  break;
 
+
             case KeyboardEvent.KEY_UP:
-                if (position.getRow() != 0) {
-                 position.setRow(-1);
-                 rectPlayer.translate( 0, -cellPlayer.getCellSize());
+                System.out.println("UP");
+                if (cellPlayer.getRow() != 0) {
+                 cellPlayer.setRow(-1);
+                 rectPlayer.translate( 0, -cellPlayer.CELLSIZE);
                 }
                  break;
+
+            case KeyboardEvent.KEY_SPACE:
+
+                Rectangle rectField = field.getCell(cellPlayer.getCol(), cellPlayer.getRow()).getRect();
+
+                if (!(rectField.isFilled())) {
+                    rectField.fill();
+                } else {
+                    rectField.draw();
+                }
+
+                break;
 
         }
 

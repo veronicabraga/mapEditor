@@ -4,27 +4,42 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Cell {
 
-    private int height;
-    private int width;
-    private int cellSize;
-    private Rectangle rect;
+
+    public final static int CELLSIZE = 10;
+    private Rectangle rectCell;
+    private int col;
+    private int row;
 
 
-    public Cell( int x, int y) {
-        //int height, int width,
-        //this.height = height;
-        //this.width = width;
-        cellSize = 10;
-        rect = new Rectangle(x, y, cellSize, cellSize);
-        rect.draw();
+    public Cell( int col, int row) {
+        this.col = col;
+        this.row = row;
+        rectCell = new Rectangle(col * CELLSIZE + Field.PADDING, row * CELLSIZE + Field.PADDING, CELLSIZE, CELLSIZE);
+        rectCell.draw();
     }
 
     public int getCellSize() {
-        return cellSize;
+        return CELLSIZE;
     }
 
     public Rectangle getRect() {
-        return rect;
+        return rectCell;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setCol(int num) {
+        col += num;
+    }
+
+    public void setRow(int num) {
+        row += num;
     }
 
 

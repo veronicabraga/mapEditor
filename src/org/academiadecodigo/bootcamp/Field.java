@@ -4,41 +4,32 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Field {
 
-    private int height;
-    private int width;
-    private int padding;
-    private int x;
-    private int y;
+    public final static int PADDING = 10;
+
     private int cols;
     private int rows;
-    private Cell cell;
-    private int cellQuantity;
-    private Rectangle rectangle;
+    private Cell[][] cells;
+
 
     public Field(int cols, int rows) {
-        padding = 10;
-        x = 10;
-        y = 10;
-        width = cols;
-        height = rows;
+
         this.cols = cols;
         this.rows = rows;
-        cell = new Cell(x, y);
 
-        rectangle = new Rectangle(padding, padding, width * cell.getCellSize(), height * cell.getCellSize());
-        rectangle.draw();
+        showField();
 
-        for(int i = 0; i < width; i++) {
-            cell = new Cell(x, y);
+    }
 
-            for(int j = 0; j < height; j++) {
-                cell = new Cell(x, y);
-                y+=cell.getCellSize();
+    public void showField() {
+
+        cells = new Cell[cols][rows];
+
+        for(int col = 0; col < cols; col++) {
+            for(int row = 0; row < rows; row++) {
+                cells[col][row] = new Cell(col, row);
             }
-            y = padding;
-            x+=cell.getCellSize();
-
         }
+
 
     }
 
@@ -50,5 +41,12 @@ public class Field {
     public int getRows() {
         return rows;
     }
+
+    public Cell getCell(int col, int row) {
+        Cell c = cells[col][row];
+        return c;
+    }
+
+
 
 }
