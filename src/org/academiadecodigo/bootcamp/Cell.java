@@ -42,5 +42,7 @@ public class Cell {
         row += num;
     }
 
-
+    public void paint() {
+        rectCell.fill();
+    }
 }

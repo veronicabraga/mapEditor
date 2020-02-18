@@ -4,6 +4,8 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.io.IOException;
+
 public class KeyboardInteraction implements KeyboardHandler {
 
     private Player player;
@@ -46,6 +48,25 @@ public class KeyboardInteraction implements KeyboardHandler {
                 field.clearField();
                 break;
 
+            case KeyboardEvent.KEY_B:
+
+                try {
+
+                    field.writeFileByLine("/Users/codecadet/workspace/mapEditor/FieldDraw");
+
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                break;
+
+            case KeyboardEvent.KEY_R:
+                try {
+                    String result = field.readFileByLine("/Users/codecadet/workspace/mapEditor/FieldDraw");
+                    field.rePrint(result);
+
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
         }
 
     }

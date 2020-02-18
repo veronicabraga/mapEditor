@@ -11,10 +11,10 @@ public class Game {
     private KeyboardInteraction KInteraction;
 
     public Game() {
-        field = new Field(50, 60);
+        field = new Field(10, 10);
         player = new Player(field);
         KInteraction = new KeyboardInteraction(player, field);
-        keyboardPresses(); 
+        keyboardPresses();
 
 
 
@@ -54,5 +54,17 @@ public class Game {
         eventCleanAll.setKey(KeyboardEvent.KEY_C);
         eventCleanAll.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(eventCleanAll);
+
+        KeyboardEvent eventSave = new KeyboardEvent();
+        eventSave.setKey(KeyboardEvent.KEY_B);
+        eventSave.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(eventSave);
+
+        KeyboardEvent eventReprint = new KeyboardEvent();
+        eventReprint.setKey(KeyboardEvent.KEY_R);
+        eventReprint .setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(eventReprint);
+
+
     }
 }
