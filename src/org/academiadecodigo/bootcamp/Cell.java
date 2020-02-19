@@ -45,4 +45,12 @@ public class Cell {
     public void paint() {
         rectCell.fill();
     }
+
+    public void erase() {
+        rectCell.draw();
+    }
+
+    public boolean isRectFilled() {
+        return getRect().isFilled();
+    }
 }

@@ -53,7 +53,7 @@ public class Field {
     public void clearField() {
         for (int col = 0; col < cols; col++) {
             for (int row = 0; row < rows; row++) {
-                cells[col][row].getRect().draw();
+                cells[col][row].erase();
             }
         }
     }
@@ -64,7 +64,7 @@ public class Field {
 
         for (int col = 0; col < cols; col++) {
             for (int row = 0; row < rows; row++) {
-                if (cells[col][row].getRect().isFilled()) {
+                if (cells[col][row].isRectFilled()) {
                     sentence += "1";
 
                 } else {
@@ -96,6 +96,8 @@ public class Field {
             for (int row = 0; row < rows; row++) {
                 if (textArray[i++].equals("1")) {
                     cells[col][row].paint();
+                } else {
+                    cells[col][row].erase();
                 }
             }
 
